@@ -1,11 +1,17 @@
-const express = require('express');
+const expressApp = require('express');
 const parser = require('body-parser');
 const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shopington');
-const app = express();
+const expressApp = expressApp();
 
-app.use(parser.urlencoded({extended: false}));
-app.use(adminRoutes);
-app.use(shopRoutes);
+expressApp.use(parser.urlencoded({extended: false}));
 
-app.listen(5000)
+expressApp.use('/admin',adminRoutes);
+
+expressApp.use(shopRoutes);
+
+expressApp.use((req,res,next) => {
+    res.status(404).send('<h1>NOT FOUND</h1>')
+})
+
+expressApp.listen(5000)
