@@ -1,17 +1,19 @@
-const expressApp = require('express');
+const path = require('path');
+const express = require('express');
 const parser = require('body-parser');
 const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shopington');
-const expressApp = expressApp();
+const expressApp = express();
 
 expressApp.use(parser.urlencoded({extended: false}));
+expressApp.use(express.static(path.join(__dirname,'public')))
 
 expressApp.use('/admin',adminRoutes);
 
 expressApp.use(shopRoutes);
 
 expressApp.use((req,res,next) => {
-    res.status(404).send('<h1>NOT FOUND</h1>')
+    res.sendFile(path.join(__dirname, 'views','not-found.html'))
 })
 
 expressApp.listen(5000)
