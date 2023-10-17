@@ -5,6 +5,9 @@ const adminData = require('./routes/admin');
 const shopRoutes = require('./routes/shopington');
 const expressApp = express();
 
+expressApp.set('view engine','pug');
+expressApp.set('views','views');
+
 expressApp.use(parser.urlencoded({extended: false}));
 expressApp.use(express.static(path.join(__dirname,'public')))
 
