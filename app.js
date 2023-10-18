@@ -16,7 +16,7 @@ expressApp.use('/admin',adminData.routes);
 expressApp.use(shopRoutes);
 
 expressApp.use((req,res,next) => {
-    res.sendFile(path.join(__dirname, 'views','not-found.html'))
+    res.render('not-found')
 })
 
 expressApp.listen(5000)
