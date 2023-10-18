@@ -1,18 +1,17 @@
-const path = require('path');
 
 const express = require('express');
 
-const root = require('../util/path')
-
 const data = require('../data/products')
+
+const routeConstants = require('../routes/routeConstants')
 
 const router = express.Router();
 
 
 
-router.get('/add-product',(req,res,next) => {
+router.get('/add-product',(req,res) => {
     //res.sendFile(path.join(root,'../', 'views','add-product.html'))
-    res.render('add-product')
+    res.render('add-product',{routeConstants: routeConstants, path: routeConstants.AddProduct, pageTitle: 'Add Products'} )
 })
 
 router.post('/add-product',(req,res) => {
