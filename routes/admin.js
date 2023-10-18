@@ -10,7 +10,6 @@ const router = express.Router();
 
 
 router.get('/add-product',(req,res) => {
-    //res.sendFile(path.join(root,'../', 'views','add-product.html'))
     res.render('add-product',{routeConstants: routeConstants, path: routeConstants.AddProduct, pageTitle: 'Add Products'} )
 })
 
