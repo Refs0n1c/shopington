@@ -3,6 +3,7 @@ const express = require('express');
 const parser = require('body-parser');
 const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shopington');
+const errorController = require('./controllers/error')
 const expressApp = express();
 
 expressApp.set('view engine','pug');
@@ -15,8 +16,6 @@ expressApp.use('/admin',adminRoutes);
 
 expressApp.use(shopRoutes);
 
-expressApp.use((req,res,next) => {
-    res.render('not-found')
-})
+expressApp.use(errorController.getNotFound);
 
 expressApp.listen(5000)
