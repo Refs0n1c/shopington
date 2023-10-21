@@ -1,4 +1,3 @@
 const path = require('path');
 
-//get project rootpath and exports
-module.exports = path.dirname(__filename);
+module.exports = path.dirname(process.mainModule.filename);
