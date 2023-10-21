@@ -1,9 +1,13 @@
 const data = require('../data/products');
-module.exports = class Product {
+const Entity = require('./entity');
+let id = 1;
+module.exports = class Product extends Entity {
     constructor(title, price, description){
+        super(id)
         this.title = title,
         this.price = price,
         this.description = description
+        id++
     }
 
     save(){
